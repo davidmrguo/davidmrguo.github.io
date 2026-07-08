@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useUiStore } from "~/stores/ui";
+
+const ui = useUiStore();
+
 // ---------------------------------------------------------------------------
 // MAILCHIMP <HEAD> CODE GOES HERE
 // ---------------------------------------------------------------------------
@@ -17,20 +21,35 @@ useHead({
 </script>
 
 <template>
-  <main>
-    <h1>David Guo</h1>
-    <p>
-      This is a minimal landing page. Sign up below to get updates.
-    </p>
+  <main
+    class="flex min-h-screen flex-col items-center justify-center px-6 py-24 text-center"
+  >
+    <section class="mx-auto flex max-w-xl flex-col items-center gap-6">
+      <!-- Product name (placeholder) -->
+      <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        Product Name
+      </h1>
 
-    <section aria-label="Newsletter signup">
-      <!-- ------------------------------------------------------------- -->
-      <!-- MAILCHIMP FORM (BODY) CODE GOES HERE                          -->
-      <!-- ------------------------------------------------------------- -->
-      <!-- Paste the Mailchimp embedded form HTML (the <form> markup and -->
-      <!-- any surrounding wrapper divs) below, replacing this comment.  -->
-      <!--                                                               -->
-      <!-- <form action="..." method="post" ...> ... </form>             -->
+      <!-- Tagline (placeholder) -->
+      <p class="text-lg font-medium text-slate-500">
+        A short tagline about what this product does.
+      </p>
+
+      <!-- Description (placeholder) -->
+      <p class="text-base leading-relaxed text-slate-500">
+        We're building something new and it's not quite ready yet. Leave
+        your email and we'll let you know the moment it's available.
+      </p>
+
+      <button
+        type="button"
+        class="mt-2 rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-700"
+        @click="ui.openWaitlistModal()"
+      >
+        Join the Waitlist
+      </button>
     </section>
+
+    <WaitlistModal />
   </main>
 </template>

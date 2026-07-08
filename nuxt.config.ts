@@ -2,6 +2,10 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
 
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
+
+  css: ["~/assets/css/tailwind.css"],
+
   // Static site generation for GitHub Pages.
   ssr: true,
   nitro: {
