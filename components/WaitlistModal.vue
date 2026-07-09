@@ -3,22 +3,10 @@ import { useUiStore } from "~/stores/ui";
 
 const ui = useUiStore();
 
-// Set once the form has been submitted, to swap the form out for a
-// confirmation message instead of following Mailchimp's redirect.
-const submitted = ref(false);
-
 function onKeydown(event: KeyboardEvent) {
   if (event.key === "Escape") {
     ui.closeWaitlistModal();
   }
-}
-
-function onSubmit() {
-  // The form still posts for real (target="mc-hidden-iframe" keeps the
-  // browser on this page instead of redirecting to Mailchimp's hosted
-  // confirmation page); this just swaps in our own message once the
-  // browser's built-in validation has let the submit through.
-  submitted.value = true;
 }
 
 watch(
@@ -26,7 +14,6 @@ watch(
   (isOpen) => {
     if (isOpen) {
       document.addEventListener("keydown", onKeydown);
-      submitted.value = false;
     } else {
       document.removeEventListener("keydown", onKeydown);
     }
@@ -89,11 +76,7 @@ onBeforeUnmount(() => {
             Sign up to receive updates and get early access when we launch.
           </p>
 
-          <div v-if="submitted" class="mt-6 rounded-lg bg-green-50 p-4 text-sm text-green-700">
-            Thanks! We'll keep you posted.
-          </div>
-
-          <div v-else id="mc_embed_shell" class="mt-6">
+          <div id="mc_embed_shell" class="mt-6">
             <div id="mc_embed_signup">
               <form
                 action="https://gmail.us1.list-manage.com/subscribe/post?u=1783fc998d0f50a680094e36b&amp;id=bddd5b7d7d&amp;f_id=007e74e1f0"
@@ -101,8 +84,8 @@ onBeforeUnmount(() => {
                 id="mc-embedded-subscribe-form"
                 name="mc-embedded-subscribe-form"
                 class="validate"
-                target="mc-hidden-iframe"
-                @submit="onSubmit"
+                target="_self"
+                novalidate
               >
                 <div id="mc_embed_signup_scroll" class="space-y-4">
                   <p class="text-xs text-slate-500">
@@ -219,20 +202,6 @@ onBeforeUnmount(() => {
               </form>
             </div>
           </div>
-
-          <!--
-            Absorbs Mailchimp's response so the browser doesn't navigate
-            away. Kept mounted unconditionally (outside the submitted/form
-            toggle above) — if this were torn down while the form's POST to
-            it is still in flight, the browser aborts that request and the
-            signup never reaches Mailchimp.
-          -->
-          <iframe
-            name="mc-hidden-iframe"
-            class="hidden"
-            title="Mailchimp response (hidden)"
-            tabindex="-1"
-          ></iframe>
 
           <button
             type="button"
