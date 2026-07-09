@@ -76,15 +76,131 @@ onBeforeUnmount(() => {
             Sign up to receive updates and get early access when we launch.
           </p>
 
-          <div class="mt-6">
-            <!-- ----------------------------------------------------------- -->
-            <!-- MAILCHIMP FORM (BODY) CODE GOES HERE                        -->
-            <!-- ----------------------------------------------------------- -->
-            <!-- Paste the Mailchimp embedded form HTML (the <form> markup   -->
-            <!-- and any surrounding wrapper divs) below, replacing this     -->
-            <!-- comment.                                                   -->
-            <!--                                                             -->
-            <!-- <form action="..." method="post" ...> ... </form>           -->
+          <div id="mc_embed_shell" class="mt-6">
+            <div id="mc_embed_signup">
+              <form
+                action="https://gmail.us1.list-manage.com/subscribe/post?u=1783fc998d0f50a680094e36b&amp;id=bddd5b7d7d&amp;f_id=007e74e1f0"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_self"
+                novalidate
+              >
+                <div id="mc_embed_signup_scroll" class="space-y-4">
+                  <p class="text-xs text-slate-500">
+                    <span class="text-red-500">*</span> indicates required
+                  </p>
+
+                  <div>
+                    <label
+                      for="mce-EMAIL"
+                      class="block text-sm font-medium text-slate-700"
+                      >Email Address <span class="text-red-500">*</span></label
+                    >
+                    <input
+                      type="email"
+                      name="EMAIL"
+                      id="mce-EMAIL"
+                      required
+                      class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="mce-FNAME"
+                      class="block text-sm font-medium text-slate-700"
+                      >First Name <span class="text-red-500">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="FNAME"
+                      id="mce-FNAME"
+                      required
+                      class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="mce-LNAME"
+                      class="block text-sm font-medium text-slate-700"
+                      >Last Name <span class="text-red-500">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="LNAME"
+                      id="mce-LNAME"
+                      required
+                      class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="mce-COMPANY"
+                      class="block text-sm font-medium text-slate-700"
+                      >Company <span class="text-red-500">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="COMPANY"
+                      id="mce-COMPANY"
+                      required
+                      class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="mce-MMERGE7"
+                      class="block text-sm font-medium text-slate-700"
+                      >Job Title <span class="text-red-500">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="MMERGE7"
+                      id="mce-MMERGE7"
+                      required
+                      class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+                    />
+                  </div>
+
+                  <div id="mce-responses" class="clear">
+                    <div
+                      class="response text-sm text-red-600"
+                      id="mce-error-response"
+                      style="display: none"
+                    ></div>
+                    <div
+                      class="response text-sm text-green-600"
+                      id="mce-success-response"
+                      style="display: none"
+                    ></div>
+                  </div>
+
+                  <!-- Honeypot field — required by Mailchimp to deter bots, must stay offscreen. -->
+                  <div aria-hidden="true" class="absolute left-[-5000px]">
+                    <input
+                      type="text"
+                      name="b_1783fc998d0f50a680094e36b_bddd5b7d7d"
+                      tabindex="-1"
+                    />
+                  </div>
+
+                  <div>
+                    <input
+                      type="submit"
+                      name="subscribe"
+                      id="mc-embedded-subscribe"
+                      value="Sign Up"
+                      class="w-full cursor-pointer rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-700"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
 
           <button
