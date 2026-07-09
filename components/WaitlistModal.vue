@@ -218,14 +218,21 @@ onBeforeUnmount(() => {
                 </div>
               </form>
             </div>
-            <!-- Absorbs Mailchimp's response so the browser doesn't navigate away. -->
-            <iframe
-              name="mc-hidden-iframe"
-              class="hidden"
-              title="Mailchimp response (hidden)"
-              tabindex="-1"
-            ></iframe>
           </div>
+
+          <!--
+            Absorbs Mailchimp's response so the browser doesn't navigate
+            away. Kept mounted unconditionally (outside the submitted/form
+            toggle above) — if this were torn down while the form's POST to
+            it is still in flight, the browser aborts that request and the
+            signup never reaches Mailchimp.
+          -->
+          <iframe
+            name="mc-hidden-iframe"
+            class="hidden"
+            title="Mailchimp response (hidden)"
+            tabindex="-1"
+          ></iframe>
 
           <button
             type="button"
