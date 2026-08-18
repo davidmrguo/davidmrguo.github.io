@@ -9,7 +9,7 @@ const year = new Date().getFullYear();
     <p>&copy; {year} {SITE_TITLE}</p>
 
     <nav aria-label="Footer">
-      {SOCIAL_LINKS.map((link) => <a href={link.href} rel="me noopener">{link.label}</a>)}
+      {SOCIAL_LINKS.map((link) => <a href={link.href} target="_blank" rel="me noopener noreferrer">{link.label}</a>)}
     </nav>
   </div>
 </footer>
