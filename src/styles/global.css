@@ -302,6 +302,78 @@ main {
   max-width: var(--measure);
 }
 
+/* ---------------------------------------------------------------------------
+   Home page welcome cycle
+   One word at a time, fading through "welcome" in each language Snow Leopard
+   shipped in. Timing is tuned to the 16 entries in WELCOMES: each word owns
+   1/16 of the cycle (6.25%), so changing that list means retuning both the
+   keyframe percentages and the multiplier on animation-duration.
+--------------------------------------------------------------------------- */
+.welcome-line {
+  --welcome-step: 2s;
+  position: relative;
+  /* Reserve the line so the posts below don't shift as words swap. */
+  min-height: 1.65em;
+}
+
+.welcome-cycle > span {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  /* Keep long greetings on one line so the reserved height always holds. */
+  white-space: nowrap;
+  opacity: 0;
+  animation: welcome-cycle calc(16 * var(--welcome-step)) infinite;
+  animation-delay: calc(var(--welcome-index) * var(--welcome-step));
+}
+
+@keyframes welcome-cycle {
+  0% {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  0.94% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  5.16% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  6.25% {
+    opacity: 0;
+    transform: translateY(-0.3em);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+}
+
+/* No motion: hold the first greeting rather than flashing through them. */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-cycle > span {
+    animation: none;
+  }
+
+  .welcome-cycle > span:first-child {
+    opacity: 1;
+  }
+}
+
+/* Visible to screen readers only. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .post-list {
   list-style: none;
   padding: 0;
