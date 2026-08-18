@@ -304,10 +304,10 @@ main {
 
 /* ---------------------------------------------------------------------------
    Home page welcome cycle
-   One word at a time, fading through "welcome" in each language Snow Leopard
-   shipped in. Timing is tuned to the 16 entries in WELCOMES: each word owns
-   1/16 of the cycle (6.25%), so changing that list means retuning both the
-   keyframe percentages and the multiplier on animation-duration.
+   One word at a time, fading through "welcome" in each language in WELCOMES.
+   Timing is tuned to that list's 3 entries: each word owns 1/3 of the cycle
+   (33.33%), so changing the list means retuning both the keyframe
+   percentages and the multiplier on animation-duration.
 --------------------------------------------------------------------------- */
 .welcome-line {
   --welcome-step: 2s;
@@ -323,7 +323,7 @@ main {
   /* Keep long greetings on one line so the reserved height always holds. */
   white-space: nowrap;
   opacity: 0;
-  animation: welcome-cycle calc(16 * var(--welcome-step)) infinite;
+  animation: welcome-cycle calc(3 * var(--welcome-step)) infinite;
   animation-delay: calc(var(--welcome-index) * var(--welcome-step));
 }
 
@@ -332,15 +332,15 @@ main {
     opacity: 0;
     transform: translateY(0.3em);
   }
-  0.94% {
+  5% {
     opacity: 1;
     transform: translateY(0);
   }
-  5.16% {
+  27.5% {
     opacity: 1;
     transform: translateY(0);
   }
-  6.25% {
+  33.33% {
     opacity: 0;
     transform: translateY(-0.3em);
   }
