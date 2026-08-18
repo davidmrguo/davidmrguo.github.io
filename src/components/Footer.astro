@@ -1,0 +1,16 @@
+---
+import { SITE_TITLE, SOCIAL_LINKS } from "../consts";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; {year} {SITE_TITLE}</p>
+
+    <nav aria-label="Footer">
+      {SOCIAL_LINKS.map((link) => <a href={link.href} rel="me noopener">{link.label}</a>)}
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </div>
+</footer>

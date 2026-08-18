@@ -1,0 +1,110 @@
+---
+import type { InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
+import { Image } from "astro:assets";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { getPublishedPosts, tagSlug } from "../../lib/posts";
+
+export const getStaticPaths = async () => {
+  const posts = await getPublishedPosts();
+
+  return posts.map((post, index) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      // `posts` is newest-first, so the *next* entry is the older post.
+      newer: index > 0 ? posts[index - 1] : undefined,
+      older: index < posts.length - 1 ? posts[index + 1] : undefined,
+    },
+  }));
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { post, newer, older } = Astro.props as Props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+const readingTime: string | undefined = remarkPluginFrontmatter.readingTime;
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  type="article"
+  publishedTime={post.data.pubDate}
+  modifiedTime={post.data.updatedDate}
+>
+  <article>
+    <header class="post-header">
+      <div class="post-meta">
+        <FormattedDate date={post.data.pubDate} />
+        {readingTime && <span class="sep" />}
+        {readingTime && <span>{readingTime}</span>}
+        {post.data.draft && <span class="badge">Draft</span>}
+      </div>
+
+      <h1>{post.data.title}</h1>
+      <p class="description">{post.data.description}</p>
+
+      {
+        post.data.updatedDate && (
+          <p class="post-meta" style="margin-top: 0.75rem">
+            Updated <FormattedDate date={post.data.updatedDate} />
+          </p>
+        )
+      }
+    </header>
+
+    {
+      post.data.cover && (
+        <Image
+          class="post-cover"
+          src={post.data.cover}
+          alt={post.data.coverAlt}
+          widths={[480, 800, 1200]}
+          sizes="(max-width: 46rem) 100vw, 46rem"
+        />
+      )
+    }
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="post-footer">
+      {
+        post.data.tags.length > 0 && (
+          <ul class="tag-list" style="margin-top: 0">
+            {post.data.tags.map((tag) => (
+              <li>
+                <a class="tag-pill" href={`/tags/${tagSlug(tag)}/`}>
+                  {tag}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      <nav class="post-nav" aria-label="More posts">
+        {
+          older && (
+            <a class="prev" href={`/posts/${older.id}/`}>
+              <span class="direction">&larr; Older</span>
+              {older.data.title}
+            </a>
+          )
+        }
+        {
+          newer && (
+            <a class="next" href={`/posts/${newer.id}/`}>
+              <span class="direction">Newer &rarr;</span>
+              {newer.data.title}
+            </a>
+          )
+        }
+      </nav>
+    </footer>
+  </article>
+</BaseLayout>

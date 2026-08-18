@@ -1,0 +1,21 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+import type { Post } from "../lib/posts";
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<li>
+  <a class="post-item" href={`/posts/${post.id}/`}>
+    <div class="post-meta">
+      <FormattedDate date={post.data.pubDate} compact />
+      {post.data.draft && <span class="badge">Draft</span>}
+    </div>
+    <h2>{post.data.title}</h2>
+    <p>{post.data.description}</p>
+  </a>
+</li>
