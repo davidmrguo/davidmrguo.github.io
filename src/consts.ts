@@ -1,5 +1,6 @@
 export const SITE_TITLE = "David Guo";
-export const SITE_DESCRIPTION = "Writing on software, systems, and whatever else is holding my attention.";
+export const SITE_DESCRIPTION =
+  "Random thoughts on data, business, and systems — with a touch of philosophy.";
 export const AUTHOR = "David Guo";
 
 export const NAV_LINKS = [
@@ -10,5 +11,7 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SOCIAL_LINKS = [
+  { href: "https://medium.com/@davidmrguo", label: "Medium" },
+  { href: "https://www.linkedin.com/in/davidmrguo/", label: "LinkedIn" },
   { href: "https://github.com/davidmrguo", label: "GitHub" },
 ] as const;
