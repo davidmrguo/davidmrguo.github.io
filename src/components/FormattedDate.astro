@@ -1,0 +1,18 @@
+---
+interface Props {
+  date: Date;
+  /** Omit the day for compact list views. */
+  compact?: boolean;
+}
+
+const { date, compact = false } = Astro.props;
+
+const formatted = date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: compact ? "short" : "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+---
+
+<time datetime={date.toISOString()}>{formatted}</time>

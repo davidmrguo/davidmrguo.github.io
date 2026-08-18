@@ -1,0 +1,46 @@
+---
+import type { InferGetStaticPropsType } from "astro";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import { getPublishedPosts, tagSlug } from "../../lib/posts";
+
+export const getStaticPaths = async () => {
+  const posts = await getPublishedPosts();
+
+  // Slugs are the route key, but the original casing is kept for display.
+  const groups = new Map<string, { label: string; posts: typeof posts }>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      const slug = tagSlug(tag);
+      const group = groups.get(slug) ?? { label: tag, posts: [] };
+      group.posts.push(post);
+      groups.set(slug, group);
+    }
+  }
+
+  return [...groups.entries()].map(([slug, group]) => ({
+    params: { tag: slug },
+    props: { label: group.label, posts: group.posts },
+  }));
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { label, posts } = Astro.props as Props;
+---
+
+<BaseLayout
+  title={`Posts tagged “${label}”`}
+  description={`All posts tagged ${label}.`}
+>
+  <h1 class="page-title">{label}</h1>
+  <p class="page-intro">
+    {posts.length} {posts.length === 1 ? "post" : "posts"} &middot;
+    <a href="/tags/">all tags</a>
+  </p>
+
+  <ul class="post-list">
+    {posts.map((post) => <PostCard post={post} />)}
+  </ul>
+</BaseLayout>

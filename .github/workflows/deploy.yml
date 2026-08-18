@@ -10,9 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+# Let one deploy finish rather than cancelling it; queued runs supersede.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -28,10 +29,10 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Generate static site
-        run: npm run generate
+      - name: Build site
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -39,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./.output/public
+          path: ./dist
 
   deploy:
     needs: build

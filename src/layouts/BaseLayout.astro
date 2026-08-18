@@ -1,0 +1,41 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  publishedTime?: Date;
+  modifiedTime?: Date;
+}
+
+const {
+  title,
+  description = SITE_DESCRIPTION,
+  ...head
+} = Astro.props;
+
+// Every page but the home page gets the site name appended.
+const pageTitle = title ? `${title} — ${SITE_TITLE}` : SITE_TITLE;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={pageTitle} description={description} {...head} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <div class="wrap">
+        <slot />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
