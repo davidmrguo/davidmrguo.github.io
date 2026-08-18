@@ -24,8 +24,3 @@ scroll of code blocks, they get their own pages here: linkable, copy-pasteable,
 and easy to keep current as they change.
 
 The posts stay on Medium. The artifacts live here.
-
-## Elsewhere
-
-- [Medium](https://medium.com/@davidmrguo) — my writing
-- [LinkedIn](https://www.linkedin.com/in/davidmrguo/) — my profile
