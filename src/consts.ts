@@ -8,33 +8,18 @@ export const AUTHOR = "David Guo";
 export const HOME_TITLE = "Hello.";
 
 /**
- * "Welcome" in each language Mac OS X Snow Leopard (10.6) shipped a
- * localization for — the greeting its first-boot welcome video used.
- *
- * Danish and Norwegian both write "Velkommen", so 17 locales yield 16
- * distinct words. The two Chinese scripts differ (欢迎 / 歡迎) and both
- * appear.
+ * "Welcome" in English, Simplified Chinese and French — a nod to the
+ * multilingual welcome video Mac OS X Snow Leopard (10.6) played on first
+ * boot, trimmed to three languages.
  *
  * NOTE: the cycle timing in global.css is tuned to this list's length.
- * Adding or removing an entry means updating the keyframe percentages.
+ * Adding or removing an entry means updating the keyframe percentages and
+ * the multiplier on animation-duration.
  */
 export const WELCOMES = [
   { text: "Welcome", lang: "en" },
-  { text: "Willkommen", lang: "de" },
-  { text: "Bienvenidos", lang: "es" },
-  { text: "Bienvenue", lang: "fr" },
-  { text: "Benvenuti", lang: "it" },
-  { text: "Welkom", lang: "nl" },
-  { text: "Velkommen", lang: "da" },
-  { text: "Välkommen", lang: "sv" },
-  { text: "Tervetuloa", lang: "fi" },
-  { text: "Witamy", lang: "pl" },
-  { text: "Bem-vindo", lang: "pt" },
-  { text: "Добро пожаловать", lang: "ru" },
-  { text: "ようこそ", lang: "ja" },
   { text: "欢迎", lang: "zh-Hans" },
-  { text: "歡迎", lang: "zh-Hant" },
-  { text: "환영합니다", lang: "ko" },
+  { text: "Bienvenue", lang: "fr" },
 ] as const;
 
 export const NAV_LINKS = [
