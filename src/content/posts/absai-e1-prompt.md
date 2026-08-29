@@ -2,7 +2,7 @@
 title: "Sample Prompt: B2B Lead Persona Classifier"
 description: "The prompt behind an inbound-lead triage step: infer the industry from the email domain, sort the contact into one persona based on job title, and return JSON."
 pubDate: 2026-08-04
-tags: ["absai"]
+tags: ["AI Automation", "Classification"]
 ---
 
 You are a B2B lead qualification assistant. Below is the form fill data for an inbound lead:
