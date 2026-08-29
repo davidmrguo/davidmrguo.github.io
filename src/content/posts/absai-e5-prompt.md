@@ -2,7 +2,7 @@
 title: "Sample Prompt: AI Team Vacation Assistant with Excel"
 description: "A scheduled task in ChatGPT to help people managers stay in the loop on team vacations."
 pubDate: 2026-08-22
-tags: ["AI Automation", "Microsoft Excel"]
+tags: ["AI Automation", "Microsoft Excel", "SharePoint"]
 ---
 
 Every weekday morning, open the Team Vacation Tracker.xlsx workbook at <SHAREPOINT_LINK> using the connected Microsoft SharePoint/OneDrive source.
