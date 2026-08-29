@@ -2,7 +2,7 @@
 title: "Sample Prompt: AI Email Link Auditor"
 description: "A scheduled task in ChatGPT to check for broken links in HTML emails."
 pubDate: 2026-08-20
-tags: ["AI Automation", "Web Scraping"]
+tags: ["AI Automation", "Web Scraping", "HTML"]
 ---
 
 Use @Gmail and the cloud browser to audit links only in newly received HTML emails.
