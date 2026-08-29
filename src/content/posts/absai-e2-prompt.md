@@ -2,7 +2,7 @@
 title: "Sample Prompt: AI File Organizer Manifesto"
 description: "A hand-edited source of truth telling an AI automation where each Desktop file belongs in Dropbox — decision order, confidence levels, and never-dos."
 pubDate: 2026-08-18
-tags: ["absai"]
+tags: ["AI Automation", "File Management"]
 ---
 
 In this doc, "you" means AI and "I" means the owner. This file is the single source of truth an AI automation uses to decide where a file from ~/Desktop belongs in Dropbox. It's meant to be edited by hand, often, as life changes. The goal of this automation is not to perfectly classify every file. The goal is to safely reduce manual filing work while never making irreversible mistakes. When in doubt, better safe than sorry. In addition to official rules, additional context may appear under the "Owner's Notes" section below.
